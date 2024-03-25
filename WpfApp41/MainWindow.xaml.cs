@@ -23,6 +23,7 @@ namespace WpfApp41
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Hello World!");
         }
     }
 }
