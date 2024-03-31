@@ -37,7 +37,13 @@ namespace WpfApp41
 
         private void SwitchToTeacherLogin_Click(object sender, RoutedEventArgs e)
         {
+            //Переключение кнопок
+
+            Button_Student.IsEnabled = true;
+            Button_Teacher.IsEnabled = false;
+
             // Переключаем видимость окон
+
             LoginGrid.Visibility = Visibility.Collapsed;
             TeacherLoginGrid.Visibility = Visibility.Visible;
             StudentRegistrationGrid.Visibility = Visibility.Collapsed; // Скрыть окно регистрации
@@ -45,6 +51,11 @@ namespace WpfApp41
 
         private void SwitchToStudentLogin_Click(object sender, RoutedEventArgs e)
         {
+            //Переключение кнопок
+
+            Button_Student.IsEnabled = false;
+            Button_Teacher.IsEnabled = true;
+
             // Переключаем видимость окон
             LoginGrid.Visibility = Visibility.Visible;
             TeacherLoginGrid.Visibility = Visibility.Collapsed;
