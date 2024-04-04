@@ -21,6 +21,13 @@ namespace WpfApp41
 {
     public partial class MainWindow : Window
     {
+        bool isReg = false;
+        Student[] students = new Student[100];
+        
+        Teacher[] teachers = new Teacher[100];
+
+        int id_stud = 0;
+        int id_teach = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +40,10 @@ namespace WpfApp41
 
             NewStudentUsernameTextBox.GotFocus += TextBox_GotFocus;
             NewStudentUsernameTextBox.LostFocus += TextBox_LostFocus;
+
+            // Добавление первых пользователей
+            students[0] = new Student(id_stud, "student", "1");
+            teachers[0] = new Teacher(id_teach, "admin", "admin");
         }
 
         private void SwitchToTeacherLogin_Click(object sender, RoutedEventArgs e)
@@ -68,14 +79,65 @@ namespace WpfApp41
             string password = StudentPasswordBox.Password;
 
             // Здесь можно добавить код для проверки авторизации ученика
+            try
+            {
+                int i = 0;
+                do
+                {
+                    if (students[i].name == username)
+                    {
+                        if (students[i].password == password)
+                        {
+                            // Открыть окно студента и закрыть основное
+                            //StudentWindow studentWindow = new StudentWindow();
+                            //studentWindow.Show();
+                            Close();
+                            break;
+                        }
+                    }
+                    i++;
+                } while (i < 100 || students[i].name != "");
+                if(IsActive)
+                    MessageBox.Show("Студент с таким логином и таким паролем не найдено. Возможно вы ввели данные не корректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch
+            {
+                MessageBox.Show("Оба или одно из полей не заполнено. Введите данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void TeacherLogin_Click(object sender, RoutedEventArgs e)
         {
             string username = TeacherUsernameTextBox.Text;
             string password = TeacherPasswordBox.Password;
-
             // Здесь можно добавить код для проверки авторизации учителя
+            try
+            {
+                int i = 0;
+                do
+                {
+
+                    if (teachers[i].name == username)
+                    {
+                        if (teachers[i].password == password)
+                        {
+                            // Открыть окно учителя и закрыть основное
+                            //TeacherWindow teacherWindow = new TeacherWindow();
+                            //teacherWindow.Show();
+                            Close();
+                            break;
+                        }
+                        
+                    }
+                    i++;
+                } while (i < 100 || teachers[i].name != "") ;
+                if (IsActive)
+                    MessageBox.Show("Учитель с таким логином и таким паролем не найдено. Возможно вы ввели данные не корректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch
+            {
+                MessageBox.Show("Оба или одно из полей не заполнено. Введите данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }            
         }
 
         private void StudentRegister_Click(object sender, RoutedEventArgs e)
@@ -113,7 +175,33 @@ namespace WpfApp41
             // Здесь можно добавить код для регистрации ученика
             // Например, добавление нового пользователя в базу данных
             // После успешной регистрации можно выполнить переход к окну авторизации для учеников
-            SwitchToStudentLogin_Click(null, null);
+            try
+            {
+                int i = 0;
+                do
+                {
+
+                    if (students[i].name == username)
+                    {
+                        // Открыть окно учителя и закрыть основное
+                        MessageBox.Show("Пользователя с таким логином уже существует. Создайте нового пользователя, или зайдите в старый аккаунт", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        isReg = true;
+
+                        break;
+                    }
+                    
+                    i++;
+                } while (i < 100 || students[i].name != "");
+                if(!isReg)
+                    MessageBox.Show("Новый аккаунт создан", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SwitchToStudentLogin_Click(null, null);
+
+            }
+            catch
+            {
+                MessageBox.Show("Оба или одно из полей не заполнено. Введите данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
         }
     }
 }
