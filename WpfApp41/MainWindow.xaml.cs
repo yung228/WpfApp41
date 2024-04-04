@@ -31,16 +31,7 @@ namespace WpfApp41
         public MainWindow()
         {
             InitializeComponent();
-            // Добавляем обработчики событий GotFocus и LostFocus для текстовых полей
-            TeacherUsernameTextBox.GotFocus += TextBox_GotFocus;
-            TeacherUsernameTextBox.LostFocus += TextBox_LostFocus;
-
-            StudentUsernameTextBox.GotFocus += TextBox_GotFocus;
-            StudentUsernameTextBox.LostFocus += TextBox_LostFocus;
-
-            NewStudentUsernameTextBox.GotFocus += TextBox_GotFocus;
-            NewStudentUsernameTextBox.LostFocus += TextBox_LostFocus;
-
+            
             // Добавление первых пользователей
             students[0] = new Student(id_stud, "student", "1");
             teachers[0] = new Teacher(id_teach, "admin", "admin");
@@ -148,25 +139,9 @@ namespace WpfApp41
             StudentRegistrationGrid.Visibility = Visibility.Visible;
         }
 
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Text == "Имя пользователя")
-            {
-                textBox.Text = "";
+        
 
-            }
-        }
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "Имя пользователя";
-
-            }
-        }
+        
         private void StudentRegisterSubmit_Click(object sender, RoutedEventArgs e)
         {
             string username = NewStudentUsernameTextBox.Text;
