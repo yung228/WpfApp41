@@ -23,7 +23,6 @@ namespace WpfApp41
     {
         bool isReg = false;
         Student[] students = new Student[100];
-        
         Teacher[] teachers = new Teacher[100];
 
         int id_stud = 0;
@@ -80,8 +79,8 @@ namespace WpfApp41
                         if (students[i].password == password)
                         {
                             // Открыть окно студента и закрыть основное
-                            //StudentWindow studentWindow = new StudentWindow();
-                            //studentWindow.Show();
+                            StudentWindow studentWindow = new StudentWindow(new Student(students[i].id, username, password));
+                            studentWindow.Show();
                             Close();
                             break;
                         }
