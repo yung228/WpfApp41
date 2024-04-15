@@ -1,0 +1,186 @@
+﻿<Window x:Class="TeacherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Teacher Application" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Стиль для всех PasswordBox -->
+        <Style TargetType="PasswordBox">
+            <!--<Setter Property="Margin" Value="0,5,0,5"/>-->
+            <!-- Отступы поля ввода -->
+            <!--<Setter Property="FontSize" Value="14"/>-->
+            <!-- Размер шрифта -->
+            <!--<Setter Property="Width" Value="200"/>-->
+            <!-- Ширина поля ввода -->
+            <Setter Property="Height" Value="30"/>
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+            <!-- Отцентровка текста по горизонтали -->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!-- Отцентровка текста по вертикали -->
+            <!-- Высота поля ввода -->
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <!-- Жирный текст -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <!-- Установка радиуса скругления углов -->
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <!--<Setter Property="Margin" Value="0,5,0,5"/>-->
+            <!-- Отступы поля ввода -->
+            <!--<Setter Property="FontSize" Value="14"/>-->
+            <!-- Размер шрифта -->
+            <!--<Setter Property="Width" Value="200"/>-->
+            <!-- Ширина поля ввода -->
+            <Setter Property="Height" Value="30"/>
+            <!-- Высота поля ввода -->
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+            <!-- Отцентровка текста по горизонтали -->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!-- Отцентровка текста по вертикали -->
+            <!--<Setter Property="FontSize" Value="14"/>-->
+            <Setter Property="FontWeight" Value="Bold"/>
+            <!-- Жирный текст -->
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <!-- Установка радиуса скругления углов -->
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- Стиль для всех кнопок -->
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="Blue"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Background" Value="LightBlue"/>
+            <!-- Цвет фона кнопки -->
+            <Setter Property="Foreground" Value="Black"/>
+            <!-- Цвет текста кнопки -->
+            <!--<Setter Property="Opacity" Value="0.8"/>-->
+            <!-- Прозрачность кнопки -->
+            <!--
+            <Setter Property="BorderThickness" Value="2"/>-->
+            <!-- Толщина границы кнопки -->
+            <!--
+            <Setter Property="BorderBrush" Value="DarkBlue"/>-->
+            <!-- Цвет границы кнопки -->
+            <!--
+            <Setter Property="Margin" Value="0,5,0,5"/>-->
+            <!-- Отступы кнопки -->
+
+            <Setter Property="FontSize" Value="12"/>
+            <!-- Размер шрифта -->
+            <!--
+            <Setter Property="Width" Value="100"/>-->
+            <!-- Ширина кнопки -->
+            <!--
+            <Setter Property="Height" Value="30"/>-->
+            <!-- Высота кнопки -->
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+            <!-- Отцентровка текста по горизонтали -->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!-- Отцентровка текста по вертикали -->
+            <Setter Property="FontWeight" Value="Bold"/>
+            <!-- Жирный текст -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+
+                            <!-- Установка радиуса скругления углов -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="GhostWhite">
+        <TabControl>
+            <!-- Первая вкладка - тесты -->
+            <TabItem Header="Тесты">
+                <Grid Background="GhostWhite">
+                    <ListBox HorizontalAlignment="Left" Background="GhostWhite" Height="250" Width="400" Margin="10">
+                        <ListBoxItem>Тест 1 (Создатель: Иванов)</ListBoxItem>
+                        <ListBoxItem>Тест 2 (Создатель: Петров)</ListBoxItem>
+                        <ListBoxItem>Тест 3 (Создатель: Сидоров)</ListBoxItem>
+                    </ListBox>
+                    <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+                </Grid>
+            </TabItem>
+
+            <!-- Вторая вкладка - учителя и группы -->
+            <TabItem Header="Учителя и группы">
+                <Grid Background="GhostWhite">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Список учителей -->
+                    <ListBox Grid.Column="0" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
+                        <ListBoxItem>Иванов (Логин: ivanov, Пароль: 123)</ListBoxItem>
+                        <ListBoxItem>Петров (Логин: petrov, Пароль: 456)</ListBoxItem>
+                        <ListBoxItem>Сидоров (Логин: sidorov, Пароль: 789)</ListBoxItem>
+                    </ListBox>
+                    <Button Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+
+                    <!-- Выпадающий список с группами -->
+                    <ComboBox Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0">
+                        <ComboBoxItem>Группа 1</ComboBoxItem>
+                        <ComboBoxItem>Группа 2</ComboBoxItem>
+                        <ComboBoxItem>Группа 3</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Список учеников в выбранной группе -->
+                    <ListBox Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
+                        <ListBoxItem>Ученик 1 (Логин: уч1, Пароль: 111)</ListBoxItem>
+                        <ListBoxItem>Ученик 2 (Логин: уч2, Пароль: 222)</ListBoxItem>
+                        <ListBoxItem>Ученик 3 (Логин: уч3, Пароль: 333)</ListBoxItem>
+                    </ListBox>
+                    <Button Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+
+                    <!-- Выпадающий список с тестами для выбора -->
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0">
+                        <ComboBoxItem>Тест 1</ComboBoxItem>
+                        <ComboBoxItem>Тест 2</ComboBoxItem>
+                        <ComboBoxItem>Тест 3</ComboBoxItem>
+                    </ComboBox>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

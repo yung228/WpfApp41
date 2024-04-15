@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.33328.57
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp41", "WpfApp41\WpfApp41.csproj", "{1C42DBB7-2241-460D-838A-E301136EA4B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{6C8330AD-EC35-4654-84BD-190F0D160864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib", "Lib\Lib.csproj", "{6C8330AD-EC35-4654-84BD-190F0D160864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherApp", "TeacherApp\TeacherApp.csproj", "{5330A027-811B-4CDA-A374-537B735121E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Window", "Window", "{4F3A10EB-114D-4866-BA0B-7462FF548712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{6C8330AD-EC35-4654-84BD-190F0D160864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C8330AD-EC35-4654-84BD-190F0D160864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C8330AD-EC35-4654-84BD-190F0D160864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5330A027-811B-4CDA-A374-537B735121E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5330A027-811B-4CDA-A374-537B735121E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5330A027-811B-4CDA-A374-537B735121E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5330A027-811B-4CDA-A374-537B735121E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5330A027-811B-4CDA-A374-537B735121E1} = {4F3A10EB-114D-4866-BA0B-7462FF548712}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4310E375-6637-4BF3-A4CD-D5292404286D}
