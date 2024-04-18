@@ -156,14 +156,14 @@
                     <Button Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
 
                     <!-- Выпадающий список с группами -->
-                    <ComboBox Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0">
+                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0">
                         <ComboBoxItem>Группа 1</ComboBoxItem>
                         <ComboBoxItem>Группа 2</ComboBoxItem>
                         <ComboBoxItem>Группа 3</ComboBoxItem>
                     </ComboBox>
 
                     <!-- Список учеников в выбранной группе -->
-                    <ListBox Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
+                    <ListBox Name="Students" Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
                         <ListBoxItem>Ученик 1 (Логин: уч1, Пароль: 111)</ListBoxItem>
                         <ListBoxItem>Ученик 2 (Логин: уч2, Пароль: 222)</ListBoxItem>
                         <ListBoxItem>Ученик 3 (Логин: уч3, Пароль: 333)</ListBoxItem>

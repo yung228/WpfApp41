@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Lib;
 namespace TeacherApp
 {
     /// <summary>
@@ -20,7 +20,7 @@ namespace TeacherApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(Student[] students, Teacher[] teachers, Tests[] tests)
         {
             InitializeComponent();
         }

@@ -13,18 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Lib;
-
+using TeacherApp;
 
 
 
 namespace WpfApp41
 {
+
     public partial class MainWindow : Window
     {
         bool isReg = false;
-        Student[] students = new Student[100];
-        Teacher[] teachers = new Teacher[100];
 
+        public Student[] students = new Student[100];
+        public Teacher[] teachers = new Teacher[100];
+        public Tests[] tests = new Tests[100];
         int id_stud = 0;
         int id_teach = 0;
         public MainWindow()
@@ -74,7 +76,7 @@ namespace WpfApp41
                 int i = 0;
                 do
                 {
-                    if (students[i].name == username)
+                    if (students[i].username == username)
                     {
                         if (students[i].password == password)
                         {
@@ -86,7 +88,7 @@ namespace WpfApp41
                         }
                     }
                     i++;
-                } while (i < 100 || students[i].name != "");
+                } while (i < 100 || students[i].username != "");
                 if(IsActive)
                     MessageBox.Show("Студент с таким логином и таким паролем не найдено. Возможно вы ввели данные не корректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -107,20 +109,20 @@ namespace WpfApp41
                 do
                 {
 
-                    if (teachers[i].name == username)
+                    if (teachers[i].username == username)
                     {
                         if (teachers[i].password == password)
                         {
                             // Открыть окно учителя и закрыть основное
-                            //TeacherWindow teacherWindow = new TeacherWindow();
-                            //teacherWindow.Show();
+                            TeacherApp.MainWindow teacherWindow = new TeacherApp.MainWindow(students, teachers, tests);
+                            teacherWindow.Show();
                             Close();
                             break;
                         }
                         
                     }
                     i++;
-                } while (i < 100 || teachers[i].name != "") ;
+                } while (i < 100 || teachers[i].username != "") ;
                 if (IsActive)
                     MessageBox.Show("Учитель с таким логином и таким паролем не найдено. Возможно вы ввели данные не корректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -155,7 +157,7 @@ namespace WpfApp41
                 do
                 {
 
-                    if (students[i].name == username)
+                    if (students[i].username == username)
                     {
                         // Открыть окно учителя и закрыть основное
                         MessageBox.Show("Пользователя с таким логином уже существует. Создайте нового пользователя, или зайдите в старый аккаунт", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -165,7 +167,7 @@ namespace WpfApp41
                     }
                     
                     i++;
-                } while (i < 100 || students[i].name != "");
+                } while (i < 100 || students[i].username != "");
                 if(!isReg)
                     MessageBox.Show("Новый аккаунт создан", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     SwitchToStudentLogin_Click(null, null);
