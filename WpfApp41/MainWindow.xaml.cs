@@ -34,8 +34,8 @@ namespace WpfApp41
             InitializeComponent();
             
             // Добавление первых пользователей
-            students[0] = new Student(id_stud, "student", "1");
-            teachers[0] = new Teacher(id_teach, "admin", "admin");
+            students[0] = new Student("student", "1");
+            teachers[0] = new Teacher("admin", "admin");
         }
 
         private void SwitchToTeacherLogin_Click(object sender, RoutedEventArgs e)
@@ -81,7 +81,7 @@ namespace WpfApp41
                         if (students[i].password == password)
                         {
                             // Открыть окно студента и закрыть основное
-                            StudentWindow studentWindow = new StudentWindow(new Student(students[i].id, username, password));
+                            StudentWindow studentWindow = new StudentWindow(students[i]);
                             studentWindow.Show();
                             Close();
                             break;

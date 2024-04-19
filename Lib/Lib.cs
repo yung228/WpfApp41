@@ -1,34 +1,49 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace Lib
 {
-    public class Lib
+    public class Marks
     {
-
+        public Marks(Student b, Tests c, int d, DateTime e)
+        {
+            student = b;
+            test = c;
+            mark = d;
+            date = e;
+        }
+        public int id { get; set; }
+        public int studentId { get; set; }
+        public virtual Student student { get; set; }
+        
+        public virtual Tests test { get; set; }
+        public int mark { get; set; }
+        public DateTime date { get; set; }
     }
     public class Student
     {
-        public Student(int a, string b, string c, string d, Group e)
+        public Student(string b, string c, string d, Group e)
         {
-            id = a;
             fullname = b;
             username = c;
             password = d;
             group = e;
         }
-        public Student(int a, string c, string d)
+        public Student(string c, string d)
         {
-            id = a;
             fullname = null;
             username = c;
             password = d;
             group = null;
         }
-        public int id;
-        public string fullname;
-        public string username;
-        public string password;
+        public int id { get; set; }
+        public string fullname { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public int groupId { get; set; }
         public virtual Group group { get; set; } = new Group();
+        public ICollection<Marks> mark { get; set; }
     }
     public class Group 
     {
@@ -37,36 +52,40 @@ namespace Lib
             name = null;
             currentTest = null;
         }
-        public Group(int a, string b, Tests c)
+        public Group(string b, Tests c)
         {
-            id = a;
             name = b;
             currentTest = c;
         }
-        public int id;
-        public string name;
+        public int id { get; set; }
+        [Required]
+        public string name { get; set; }
+        public int currentTestId { get; set; }
         public virtual Tests currentTest { get; set; } = new Tests();
+        public ICollection<Student> student { get; set; }
     }
     public class Teacher
     {
-        public Teacher(int a, string b, string c, string d)
+        public Teacher(string b, string c, string d)
         {
-            id = a;
             fullname = b;
             username = c;
             password = d;
         }
-        public Teacher(int a, string c, string d)
+        public Teacher(string c, string d)
         {
-            id = a;
             fullname = null;
             username = c;
             password = d;
         }
-        public int id;
-        public string fullname;
-        public string username;
-        public string password;
+        public int id { get; set; }
+        [Required]
+        public string fullname { get; set; }
+        [Required]
+        public string username { get; set; }
+        [Required]
+        public string password { get; set; }
+        public ICollection<Tests> test { get; set; }
     }
     public class Tests
     {
@@ -74,46 +93,50 @@ namespace Lib
         {
             name = null;
         }
-        public Tests(int a, string b, Teacher e, DateTime c, int d)
+        public Tests(string b, Teacher e, DateTime c, int d)
         {
-            id = a;
             name = b;
             teacher = e;
             time = c;
             maxMark = d;
         }
 
-        public int id;
-        public string name;
+        public int id { get; set; }
+        [Required]
+        public string name { get; set; }
+        public int teacherId { get; set; }
         public virtual Teacher teacher { get; set; }
-        public DateTime time;
-        public int maxMark;
+        public DateTime time { get; set; }
+        public int maxMark { get; set; }
     }
     public class Questions
     {
-        public Questions(int a, string b, Tests c)
+        public Questions(string b, Tests c)
         {
-            id = a;
             quest = b;
             test = c;
         }
 
-        public int id;
-        public string quest;
-        public string questionType;
+        public int id { get; set; }
+        [Required]
+        public string quest { get; set; }
+        public string questionType { get; set; }
+        public int testId { get; set; }
         public virtual Tests test { get; set; } = new Tests();
-        public string image;
+        public byte[] image { get; set; }
+        public ICollection<Answers> answer { get; set; }
     }
     public class Answers
     {
-        public Answers(int a, string b, Questions c)
+        public Answers(string b, Questions c)
         {
-            id = a;
             name = b;
             question = c;
         }
-        public int id;
-        public string name;
+        public int id { get; set; }
+        [Required]
+        public string name { get; set; }
+        public int questionId { get; set; }
         public virtual Questions question { get; set; }
     }
     public class ApplicationDbContext : DbContext
