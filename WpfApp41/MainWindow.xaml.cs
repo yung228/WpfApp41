@@ -100,7 +100,7 @@ namespace WpfApp41
                         if (students[i].password == password)
                         {
                             // Открыть окно студента и закрыть основное
-                            StudentApp.MainWindow studentWindow = new StudentApp.MainWindow(students[i]);
+                            StudentApp.MainWindow studentWindow = new StudentApp.MainWindow(students[i], tests, groups, questions, answers, marks);
                             studentWindow.Show();
                             Close();
                             break;
