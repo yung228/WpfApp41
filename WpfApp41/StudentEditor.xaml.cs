@@ -21,13 +21,13 @@ namespace WpfApp41
         {
             InitializeComponent();
             user = student;
-            NameTextBox.Text = user.name;
+            NameTextBox.Text = user.username;
             PasswordTextBox.Text = user.password;
         }
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            user.name = NameTextBox.Text;
+            user.username = NameTextBox.Text;
             user.password = PasswordTextBox.Text;
             MessageBox.Show("Изменения сохранены успешно!");
             Close();

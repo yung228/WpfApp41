@@ -22,7 +22,7 @@ namespace WpfApp41
         {
             InitializeComponent();
             user = student;
-            StudUsername.Text = user.name;
+            StudUsername.Text = user.username;
         }
 
         private void EditUser(object sender, RoutedEventArgs e)
@@ -30,7 +30,7 @@ namespace WpfApp41
             StudentEditor editWindow = new StudentEditor(user);
             editWindow.ShowDialog();
 
-            StudUsername.Text = user.name;
+            StudUsername.Text = user.username;
         }
     }
 }

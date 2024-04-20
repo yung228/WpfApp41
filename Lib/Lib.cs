@@ -23,22 +23,19 @@ namespace Lib
     }
     public class Student
     {
-        public Student(string b, string c, string d, Group e)
+        public Student(string c, string d, Group e)
         {
-            fullname = b;
             username = c;
             password = d;
             group = e;
         }
         public Student(string c, string d)
         {
-            fullname = null;
             username = c;
             password = d;
             group = null;
         }
         public int id { get; set; }
-        public string fullname { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int groupId { get; set; }
@@ -68,19 +65,15 @@ namespace Lib
     {
         public Teacher(string b, string c, string d)
         {
-            fullname = b;
             username = c;
             password = d;
         }
         public Teacher(string c, string d)
         {
-            fullname = null;
             username = c;
             password = d;
         }
         public int id { get; set; }
-        [Required]
-        public string fullname { get; set; }
         [Required]
         public string username { get; set; }
         [Required]
@@ -93,12 +86,11 @@ namespace Lib
         {
             name = null;
         }
-        public Tests(string b, Teacher e, DateTime c, int d)
+        public Tests(string b, Teacher e, DateTime c)
         {
             name = b;
             teacher = e;
             time = c;
-            maxMark = d;
         }
 
         public int id { get; set; }
@@ -107,14 +99,16 @@ namespace Lib
         public int teacherId { get; set; }
         public virtual Teacher teacher { get; set; }
         public DateTime time { get; set; }
-        public int maxMark { get; set; }
     }
     public class Questions
     {
-        public Questions(string b, Tests c)
+        public Questions(string b, Tests c, int d, int e)
         {
             quest = b;
+            questionType = "Test";
             test = c;
+            whatIsRight = d;
+            score = e;
         }
 
         public int id { get; set; }
@@ -123,6 +117,8 @@ namespace Lib
         public string questionType { get; set; }
         public int testId { get; set; }
         public virtual Tests test { get; set; } = new Tests();
+        public int whatIsRight { get; set; }
+        public int score { get; set; }
         public byte[] image { get; set; }
         public ICollection<Answers> answer { get; set; }
     }
@@ -141,9 +137,9 @@ namespace Lib
     }
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Student> Countries { get; set; }
-        public DbSet<Teacher> Companies { get; set; }
-        public DbSet<Tests> Users { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<Tests> Tests { get; set; }
         public DbSet<Questions> Questions { get; set; }
         public DbSet<Answers> Answers { get; set; }
         public DbSet<Group> Groups { get; set; }

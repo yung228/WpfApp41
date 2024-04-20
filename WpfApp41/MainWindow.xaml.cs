@@ -24,29 +24,50 @@ namespace WpfApp41
     {
         bool isReg = false;
 
-        public Student[] students = new Student[100];
-        public Teacher[] teachers = new Teacher[100];
-        public Tests[] tests = new Tests[100];
+        public List <Student> students;
+        public List<Teacher> teachers;
+        public List<Tests> tests;
+        public List<Group> groups;
+        public List<Questions> questions;
+        public List<Answers> answers;
+        public List<Marks> marks;
         int id_stud = 0;
         int id_teach = 0;
         public MainWindow()
         {
-            InitializeComponent();
             
-            // Добавление первых пользователей
-            students[0] = new Student("student", "1");
-            teachers[0] = new Teacher("admin", "admin");
+            teachers.Add(new Teacher("admin", "admin"));
+            tests.Add(new Tests("Test1", teachers[0], new DateTime()));
+            questions.Add(new Questions("What is cucumber", tests[0], 2, 1));
+            answers.Add(new Answers("Fruit", questions[0]));
+            answers.Add(new Answers("Meat", questions[0]));
+            answers.Add(new Answers("Vegetable", questions[0]));
+            groups.Add(new Group("First", tests[0]));
+            students.Add(new Student("student", "1", groups[0]));
+            using (var context = new ApplicationDbContext())
+            {
+                context.Database.EnsureCreated();
+                //Potom ubrat
+                context.Database.EnsureDeleted();
+                context.Student.Add(students[0]);
+                context.Teacher.Add(teachers[0]);
+                context.Tests.Add(tests[0]);
+                context.Questions.Add(questions[0]);
+                context.Answers.AddRange(answers);
+                context.Groups.Add(groups[0]);
+                context.SaveChanges();
+            }
+            GroupPick.Items.Add(groups);
+            InitializeComponent();
         }
 
         private void SwitchToTeacherLogin_Click(object sender, RoutedEventArgs e)
         {
             //Переключение кнопок
-
             Button_Student.IsEnabled = true;
             Button_Teacher.IsEnabled = false;
 
             // Переключаем видимость окон
-
             LoginGrid.Visibility = Visibility.Collapsed;
             TeacherLoginGrid.Visibility = Visibility.Visible;
             StudentRegistrationGrid.Visibility = Visibility.Collapsed; // Скрыть окно регистрации
@@ -114,7 +135,7 @@ namespace WpfApp41
                         if (teachers[i].password == password)
                         {
                             // Открыть окно учителя и закрыть основное
-                            TeacherApp.MainWindow teacherWindow = new TeacherApp.MainWindow(students, teachers, tests);
+                            TeacherApp.MainWindow teacherWindow = new TeacherApp.MainWindow(students, teachers, tests, groups, questions, answers, marks);
                             teacherWindow.Show();
                             Close();
                             break;
@@ -146,6 +167,7 @@ namespace WpfApp41
         private void StudentRegisterSubmit_Click(object sender, RoutedEventArgs e)
         {
             string username = NewStudentUsernameTextBox.Text;
+            string group = NewStudentGroupTextBox.Text;
             string password = NewStudentPasswordBox.Password;
 
             // Здесь можно добавить код для регистрации ученика
@@ -170,9 +192,15 @@ namespace WpfApp41
                 } while (i < 100 || students[i].username != "");
                 if(!isReg)
                     MessageBox.Show("Новый аккаунт создан", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    using (var context = new ApplicationDbContext())
+                    {
+                        id_stud++;
+                        students.Add(new Student(username, password));
+                        context.Student.Add(students[id_stud]);
+                    }
                     SwitchToStudentLogin_Click(null, null);
 
-            }
+                }
             catch
             {
                 MessageBox.Show("Оба или одно из полей не заполнено. Введите данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
