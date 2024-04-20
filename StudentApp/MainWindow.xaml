@@ -126,10 +126,16 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <StackPanel>
-            
-            <Button Grid.Column="0" Content="Редактировать" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Margin="0,0,0,10"/>
-            <Button Grid.Column="0" Content="Редактировать" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Margin="0,0,0,10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Login_Name" FontSize="30">User</TextBlock>
+        <StackPanel Grid.Row="1">
+
+            <Button FontSize="20" Grid.Row="1" Content="Пройти тест" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300" Margin="0,0,0,10"/>
+            <Button FontSize="20" Grid.Row="1" Content="Редактировать профиль" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300" Margin="0,0,0,10"/>
+            <Button FontSize="20" Grid.Row="1" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="300" Margin="0,0,0,10"/>
         </StackPanel>
     </Grid>
 </Window>

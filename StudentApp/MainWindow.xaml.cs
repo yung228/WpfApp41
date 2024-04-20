@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Lib;
+using StudentApp;
 namespace StudentApp
 {
     /// <summary>
@@ -20,9 +21,19 @@ namespace StudentApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public Student user;
+        public MainWindow(Student student)
         {
+            user = student;
+            Login_Name.Text = user.username;
             InitializeComponent();
+
+        }
+        private void EditUser(object sender, RoutedEventArgs e)
+        {
+            StudentEditor editWindow = new StudentEditor(user);
+            editWindow.ShowDialog();
+            Login_Name.Text = user.username;
         }
     }
 }

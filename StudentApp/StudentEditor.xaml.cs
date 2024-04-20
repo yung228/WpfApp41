@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Lib;
-namespace WpfApp41
+namespace StudentApp
 {
     public partial class StudentEditor : Window
     {

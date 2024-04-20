@@ -15,8 +15,6 @@ using System.Windows.Shapes;
 using Lib;
 using TeacherApp;
 
-
-
 namespace WpfApp41
 {
 
@@ -102,7 +100,7 @@ namespace WpfApp41
                         if (students[i].password == password)
                         {
                             // Открыть окно студента и закрыть основное
-                            StudentWindow studentWindow = new StudentWindow(students[i]);
+                            StudentApp.MainWindow studentWindow = new StudentApp.MainWindow(students[i]);
                             studentWindow.Show();
                             Close();
                             break;
