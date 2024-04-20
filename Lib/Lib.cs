@@ -8,14 +8,6 @@ namespace Lib
     }
     public class Student
     {
-        public Student(int a, string b, string c, string d, Group e)
-        {
-            id = a;
-            fullname = b;
-            username = c;
-            password = d;
-            group = e;
-        }
         public Student(int a, string c, string d)
         {
             id = a;
@@ -23,6 +15,14 @@ namespace Lib
             username = c;
             password = d;
             group = null;
+        }
+        public Student(int a, string b, string c, string d, Group e)
+        {
+            id = a;
+            fullname = b;
+            username = c;
+            password = d;
+            group = e;
         }
         public int id;
         public string fullname;
@@ -49,17 +49,17 @@ namespace Lib
     }
     public class Teacher
     {
-        public Teacher(int a, string b, string c, string d)
-        {
-            id = a;
-            fullname = b;
-            username = c;
-            password = d;
-        }
         public Teacher(int a, string c, string d)
         {
             id = a;
             fullname = null;
+            username = c;
+            password = d;
+        }
+        public Teacher(int a, string b, string c, string d)
+        {
+            id = a;
+            fullname = b;
             username = c;
             password = d;
         }
@@ -87,7 +87,7 @@ namespace Lib
         public string name;
         public virtual Teacher teacher { get; set; }
         public DateTime time;
-        public int maxMark;
+        public float maxMark;
     }
     public class Questions
     {
@@ -102,7 +102,33 @@ namespace Lib
         public string quest;
         public string questionType;
         public virtual Tests test { get; set; } = new Tests();
-        public string image;
+        public virtual Images image { get; set; } = new Images();
+        public float mark;
+
+    }
+    public class Images
+    {
+        public Images()
+        {
+
+        }
+        public int id;
+        //надо перепроверить формат
+        public int image;
+    }
+    public class Marks
+    {
+        public Marks(int a, float b, Student c)
+        {
+            id = a;
+            mark = b;
+            student = c;
+        }
+        public int id;
+        public virtual Student student { get; set; }
+        public virtual Tests test { get; set; } = new Tests();
+        public float mark;
+        public DateTime date;
     }
     public class Answers
     {
@@ -115,6 +141,8 @@ namespace Lib
         public int id;
         public string name;
         public virtual Questions question { get; set; }
+        //нужно потом переделать
+        public int isCorrect;
     }
     public class ApplicationDbContext : DbContext
     {
@@ -122,6 +150,7 @@ namespace Lib
         public DbSet<Teacher> Companies { get; set; }
         public DbSet<Tests> Users { get; set; }
         public DbSet<Questions> Questions { get; set; }
+        public DbSet<Marks> Marks { get; set; }
         public DbSet<Answers> Answers { get; set; }
         public DbSet<Group> Groups { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
