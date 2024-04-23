@@ -154,7 +154,7 @@
                     <Button Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
 
                     <!-- Выпадающий список с группами -->
-                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0" SelectionChanged="Groups_SelectionChanged">
+                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0" >
                         
                     </ComboBox>
 

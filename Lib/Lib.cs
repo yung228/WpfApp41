@@ -6,13 +6,13 @@ namespace Lib
 {
     public class Marks
     {
-        public Marks(Student b, Tests c, int d, DateTime e)
-        {
-            student = b;
-            test = c;
-            mark = d;
-            date = e;
-        }
+        //public Marks(Student b, Tests c, int d, DateTime e)
+        //{
+        //    student = b;
+        //    test = c;
+        //    mark = d;
+        //    date = e;
+        //}
         public int id { get; set; }
         public int studentId { get; set; }
         public virtual Student student { get; set; }
@@ -23,18 +23,18 @@ namespace Lib
     }
     public class Student
     {
-        public Student(string c, string d, Group e)
-        {
-            username = c;
-            password = d;
-            group = e;
-        }
-        public Student(string c, string d)
-        {
-            username = c;
-            password = d;
-            group = null;
-        }
+        //public Student(string c, string d, Group e)
+        //{
+        //    username = c;
+        //    password = d;
+        //    group = e;
+        //}
+        //public Student(string c, string d)
+        //{
+        //    username = c;
+        //    password = d;
+        //    group = null;
+        //}
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
@@ -44,16 +44,16 @@ namespace Lib
     }
     public class Group 
     {
-        public Group()
-        {
-            name = null;
-            currentTest = null;
-        }
-        public Group(string b, Tests c)
-        {
-            name = b;
-            currentTest = c;
-        }
+        //public Group()
+        //{
+        //    name = null;
+        //    currentTest = null;
+        //}
+        //public Group(string b, Tests c)
+        //{
+        //    name = b;
+        //    currentTest = c;
+        //}
         public int id { get; set; }
         [Required]
         public string name { get; set; }
@@ -63,16 +63,16 @@ namespace Lib
     }
     public class Teacher
     {
-        public Teacher(string b, string c, string d)
-        {
-            username = c;
-            password = d;
-        }
-        public Teacher(string c, string d)
-        {
-            username = c;
-            password = d;
-        }
+        //public Teacher(string b, string c, string d)
+        //{
+        //    username = c;
+        //    password = d;
+        //}
+        //public Teacher(string c, string d)
+        //{
+        //    username = c;
+        //    password = d;
+        //}
         public int id { get; set; }
         [Required]
         public string username { get; set; }
@@ -82,16 +82,16 @@ namespace Lib
     }
     public class Tests
     {
-        public Tests()
-        {
-            name = null;
-        }
-        public Tests(string b, Teacher e, DateTime c)
-        {
-            name = b;
-            teacher = e;
-            time = c;
-        }
+        //public Tests()
+        //{
+        //    name = null;
+        //}
+        //public Tests(string b, Teacher e, DateTime c)
+        //{
+        //    name = b;
+        //    teacher = e;
+        //    time = c;
+        //}
 
         public int id { get; set; }
         [Required]
@@ -102,14 +102,14 @@ namespace Lib
     }
     public class Questions
     {
-        public Questions(string b, Tests c, int d, int e)
-        {
-            quest = b;
-            questionType = "Test";
-            test = c;
-            whatIsRight = d;
-            score = e;
-        }
+        //public Questions(string b, Tests c, int d, int e)
+        //{
+        //    quest = b;
+        //    questionType = "Test";
+        //    test = c;
+        //    whatIsRight = d;
+        //    score = e;
+        //}
 
         public int id { get; set; }
         [Required]
@@ -124,11 +124,11 @@ namespace Lib
     }
     public class Answers
     {
-        public Answers(string b, Questions c)
-        {
-            name = b;
-            question = c;
-        }
+        //public Answers(string b, Questions c)
+        //{
+        //    name = b;
+        //    question = c;
+        //}
         public int id { get; set; }
         [Required]
         public string name { get; set; }

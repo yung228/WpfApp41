@@ -22,31 +22,31 @@ namespace WpfApp41
     {
         bool isReg = false;
 
-        public List <Student> students;
-        public List<Teacher> teachers;
-        public List<Tests> tests;
-        public List<Group> groups;
-        public List<Questions> questions;
-        public List<Answers> answers;
-        public List<Marks> marks;
+        public List <Student> students = new List<Student>(1000);
+        public List<Teacher> teachers = new List<Teacher>(1000);
+        public List<Tests> tests = new List<Tests>(1000);
+        public List<Group> groups = new List<Group>(1000);
+        public List<Questions> questions = new List<Questions>(1000);
+        public List<Answers> answers = new List<Answers>(1000);
+        public List<Marks> marks = new List<Marks>(1000);
         int id_stud = 0;
         int id_teach = 0;
         public MainWindow()
         {
             
-            teachers.Add(new Teacher("admin", "admin"));
-            tests.Add(new Tests("Test1", teachers[0], new DateTime()));
-            questions.Add(new Questions("What is cucumber", tests[0], 2, 1));
-            answers.Add(new Answers("Fruit", questions[0]));
-            answers.Add(new Answers("Meat", questions[0]));
-            answers.Add(new Answers("Vegetable", questions[0]));
-            groups.Add(new Group("First", tests[0]));
-            students.Add(new Student("student", "1", groups[0]));
+            teachers.Add(new Teacher {username = "admin", password = "admin" });
+            tests.Add(new Tests {name = "Test1", teacher = teachers[0], time = new DateTime()});
+            questions.Add(new Questions {quest = "What is cucumber", test = tests[0], whatIsRight = 2, score = 1 });
+            answers.Add(new Answers {name = "Fruit", question = questions[0] });
+            answers.Add(new Answers { name = "Meat", question = questions[0] });
+            answers.Add(new Answers { name = "Vegetable", question = questions[0] });
+            groups.Add(new Group { name = "First", currentTest = tests[0] });
+            students.Add(new Student { username = "student", password = "1", group = groups[0] });
             using (var context = new ApplicationDbContext())
             {
-                context.Database.EnsureCreated();
                 //Potom ubrat
                 context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
                 context.Student.Add(students[0]);
                 context.Teacher.Add(teachers[0]);
                 context.Tests.Add(tests[0]);
@@ -54,8 +54,9 @@ namespace WpfApp41
                 context.Answers.AddRange(answers);
                 context.Groups.Add(groups[0]);
                 context.SaveChanges();
-            }
-            GroupPick.Items.Add(groups);
+            } 
+            GroupPick.ItemsSource = new List<Group>{groups[0]};
+            GroupPick.DisplayMemberPath = "name";
             InitializeComponent();
         }
 
@@ -193,7 +194,7 @@ namespace WpfApp41
                     using (var context = new ApplicationDbContext())
                     {
                         id_stud++;
-                        students.Add(new Student(username, password));
+                        students.Add(new Student { username = username, password = password });
                         context.Student.Add(students[id_stud]);
                     }
                     SwitchToStudentLogin_Click(null, null);
