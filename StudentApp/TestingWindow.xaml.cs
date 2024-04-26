@@ -25,6 +25,8 @@ namespace StudentApp
         public List<Answers> answers = new List<Answers>();
         public TestingWindow(List<Questions> a, List<Answers> b)
         {
+
+            InitializeComponent();
             questions = a;
             answers = b;
             ProgresBar.Maximum = questions.Count;
@@ -37,7 +39,6 @@ namespace StudentApp
                     break;
                 }
             }
-            InitializeComponent();
         }
         private void ForwardClicked(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -60,10 +61,10 @@ namespace StudentApp
                 {
                     Answ.Items.Add(answers[i].name);
                 }
-                
-                
+
+
             }
-            
+
         }
 
         private void Answ_MouseDown(object sender, MouseButtonEventArgs e)

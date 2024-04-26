@@ -132,17 +132,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Content="Имя:" Grid.Row="0" Margin="5,5,5,5"/>
-        <TextBox x:Name="nameTextBox" Grid.Row="1" Margin="5,5,5,5"/>
-
         <Label Content="Логин:" Grid.Row="2" Margin="5,5,5,5"/>
         <TextBox x:Name="loginTextBox" Grid.Row="3" Margin="5,5,5,5"/>
 
         <Label Content="Пароль:" Grid.Row="4" Margin="5,5,5,5"/>
-        <PasswordBox x:Name="passwordBox" Grid.Row="4" Margin="5,35,5,93" Grid.RowSpan="2"/>
+        <PasswordBox x:Name="passwordBox" Grid.Row="4" Margin="5,35,5,143" Grid.RowSpan="2"/>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5"/>
-        <Button Content="Сохранить"  Margin="179,46,255,56" Grid.Row="5" Height="20" Width="66"/>
+        <Button Click="Button_Click" Content="Сохранить"  Margin="179,46,255,56" Grid.Row="5" Height="20" Width="66"/>
         <Button Content="Отмена"  Margin="250,46,184,56" Grid.Row="5" Height="20" Width="66"/>
     </Grid>
 </Window>

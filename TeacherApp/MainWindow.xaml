@@ -127,11 +127,8 @@
             <TabItem Header="Тесты">
                 <Grid Background="GhostWhite">
                     <ListBox x:Name="TestListBox" HorizontalAlignment="Left" Background="GhostWhite" Height="250" Width="400" Margin="10">
-                        <ListBoxItem>Тест 1 (Создатель: Иванов)</ListBoxItem>
-                        <ListBoxItem>Тест 2 (Создатель: Петров)</ListBoxItem>
-                        <ListBoxItem>Тест 3 (Создатель: Сидоров)</ListBoxItem>
                     </ListBox>
-                    <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Click="Button_Click" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
                     <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
                     <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
                 </Grid>
@@ -149,8 +146,8 @@
                     <ListBox x:Name="TeacherListBox" Grid.Column="0" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
                         
                     </ListBox>
-                    <Button Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
-                    <Button Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Click="Button_Click_2" Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Click="Button_Click_1" Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
                     <Button Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
 
                     <!-- Выпадающий список с группами -->

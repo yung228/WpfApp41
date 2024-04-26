@@ -156,9 +156,8 @@
                 <TextBlock Text="Регистрация для учеников" FontSize="20" Margin="0,0,0,20"/>
                 <TextBlock Text="Имя пользователя" FontSize="10" Margin="25,0,0,2"/>
                 <TextBox x:Name="NewStudentUsernameTextBox" Text="" Margin="0,0,0,10" Width="200"/>
-                <ComboBox x:Name="GroupPick" Width="200">
+                <ComboBox x:Name="GroupPick" Width="200" Margin="0,0,0,10" ItemsSource="{Binding MyDataSource}">
                 </ComboBox>
-                <TextBox x:Name="NewStudentGroupTextBox" Text="" Margin="0,0,0,10" Width="200"/>
                 <TextBlock Text="Пароль" FontSize="10" Margin="25,0,0,2"/>
                 <PasswordBox x:Name="NewStudentPasswordBox" Password="" Margin="0,0,0,10" Width="200"/>
                 <Button Content="Зарегистрироваться" Click="StudentRegisterSubmit_Click" Margin="0,0,0,10" Width="150"/>

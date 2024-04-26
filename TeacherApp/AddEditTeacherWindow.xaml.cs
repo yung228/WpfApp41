@@ -11,17 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Lib;
 namespace TeacherApp
 {
-    /// <summary>
-    /// Логика взаимодействия для AddEditTeacherWindow.xaml
-    /// </summary>
+    
     public partial class AddEditTeacherWindow : Window
     {
-        public AddEditTeacherWindow()
+        public Teacher teacher = new Teacher();
+        public AddEditTeacherWindow(Teacher user)
         {
             InitializeComponent();
+            teacher = user;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            teacher.username = loginTextBox.Text;
+            teacher.password = passwordBox.Password;
         }
     }
 }

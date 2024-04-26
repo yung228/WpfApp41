@@ -54,10 +54,12 @@ namespace WpfApp41
                 context.Answers.AddRange(answers);
                 context.Groups.Add(groups[0]);
                 context.SaveChanges();
-            } 
-            GroupPick.ItemsSource = new List<Group>{groups[0]};
-            GroupPick.DisplayMemberPath = "name";
+            }
+            
+
             InitializeComponent();
+            GroupPick.ItemsSource = groups;
+            GroupPick.DisplayMemberPath = "name";
         }
 
         private void SwitchToTeacherLogin_Click(object sender, RoutedEventArgs e)
@@ -166,7 +168,6 @@ namespace WpfApp41
         private void StudentRegisterSubmit_Click(object sender, RoutedEventArgs e)
         {
             string username = NewStudentUsernameTextBox.Text;
-            string group = NewStudentGroupTextBox.Text;
             string password = NewStudentPasswordBox.Password;
 
             // Здесь можно добавить код для регистрации ученика

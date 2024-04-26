@@ -28,6 +28,8 @@ namespace StudentApp
         public List<Marks> mark;
         public MainWindow(Student student, List<Tests> tests, List<Group> groups, List<Questions> questions, List<Answers> answers, List<Marks> marks)
         {
+            
+            InitializeComponent();
             user = student;
             test = tests;
             group = groups;
@@ -35,13 +37,12 @@ namespace StudentApp
             answer = answers;
             mark = marks;
             Login_Name.Text = user.username;
-            InitializeComponent();
-
         }
         public MainWindow(int mark)
         {
-            Marker.Text = Convert.ToString(mark);
+            
             InitializeComponent();
+            Marker.Text = Convert.ToString(mark);
         }
         private void EditUser(object sender, RoutedEventArgs e)
         {
@@ -55,7 +56,7 @@ namespace StudentApp
         }
         private void Test_Open(object sender, RoutedEventArgs e)
         {
-            Tests current_test = test[group[user.group.id].id];
+            Tests current_test = test[0];
             List<Questions> que = new List<Questions>();
             for (int i = 0; i < question.Count; i++)
             {
