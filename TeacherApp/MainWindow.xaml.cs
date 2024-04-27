@@ -34,6 +34,7 @@ namespace TeacherApp
             
             AddEditTestWindow addTest = new AddEditTestWindow(test);
             addTest.ShowDialog();
+            TestListBox.Items.Add(test[test.Count]);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -50,8 +51,12 @@ namespace TeacherApp
             Teacher user = teacher_user[teacher_user.Count-1];
             AddEditTeacherWindow editWindow = new AddEditTeacherWindow(user);
             editWindow.ShowDialog();
-            TeacherListBox.SelectedItem = user;
-            teacher_user[teacher_user.Count - 1] = user;
+            if(user != null)
+            {
+                TeacherListBox.Items.Add(user);
+                teacher_user.Add(user);
+            }
+            
         }
     }
 }

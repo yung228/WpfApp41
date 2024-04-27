@@ -162,7 +162,7 @@
             <!-- Antworten -->
             <StackPanel>
                 <TextBlock x:Name="Question" FontSize="20"></TextBlock>
-                <ListBox MouseDown="Answ_MouseDown" x:Name="Answ"></ListBox>
+                <ListBox x:Name="Answ"></ListBox>
             </StackPanel>
             <Image Width="200"
                    Height="200"
@@ -192,8 +192,7 @@
             <ProgressBar Height="20"
                          x:Name="ProgresBar"
                          Minimum="0" 
-                         Maximum="1" 
-                         Value="{Binding CompletedQuestions}" 
+                         Maximum="1"
                          Grid.Column="0" Grid.ColumnSpan="2"
                          
                          VerticalAlignment="Center" 
@@ -209,7 +208,7 @@
                 <Button x:Name="But"
                     Grid.Column="1"
                         Margin="0 30"
-                        Click="ForwardClicked" IsEnabled="False">
+                        Click="ForwardClicked">
                     <TextBlock Text="К следующему вопросу"
                                FontSize="16"
                                VerticalAlignment="Bottom"

@@ -40,6 +40,18 @@ namespace WpfApp41
             answers.Add(new Answers {name = "Fruit", question = questions[0] });
             answers.Add(new Answers { name = "Meat", question = questions[0] });
             answers.Add(new Answers { name = "Vegetable", question = questions[0] });
+            questions.Add(new Questions { quest = "What is tomato", test = tests[0], whatIsRight = 2, score = 1 });
+            answers.Add(new Answers { name = "Fruit", question = questions[1] });
+            answers.Add(new Answers { name = "Meat", question = questions[1] });
+            answers.Add(new Answers { name = "Vegetable", question = questions[1] });
+            questions.Add(new Questions { quest = "What is chicken", test = tests[0], whatIsRight = 1, score = 1 });
+            answers.Add(new Answers { name = "Fruit", question = questions[2] });
+            answers.Add(new Answers { name = "Meat", question = questions[2] });
+            answers.Add(new Answers { name = "Vegetable", question = questions[2] });
+            questions.Add(new Questions { quest = "What is apple", test = tests[0], whatIsRight = 0, score = 1 });
+            answers.Add(new Answers { name = "Fruit", question = questions[3] });
+            answers.Add(new Answers { name = "Meat", question = questions[3] });
+            answers.Add(new Answers { name = "Vegetable", question = questions[3] });
             groups.Add(new Group { name = "First", currentTest = tests[0] });
             students.Add(new Student { username = "student", password = "1", group = groups[0] });
             using (var context = new ApplicationDbContext())

@@ -15,17 +15,15 @@ using System.Windows.Shapes;
 using Lib;
 namespace StudentApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public Student user;
-        public List<Tests> test;
-        public List<Group> group;
-        public List<Questions> question;
-        public List<Answers> answer;
-        public List<Marks> mark;
+        public Student user = new Student();
+        public List<Tests> test = new List<Tests>();
+        public List<Group> group = new List<Group>();
+        public List<Questions> question = new List<Questions>();
+        public List<Answers> answer = new List<Answers>();
+        public List<Marks> mark = new List<Marks>();
+        public int max_mark = 0;
         public MainWindow(Student student, List<Tests> tests, List<Group> groups, List<Questions> questions, List<Answers> answers, List<Marks> marks)
         {
             
@@ -37,12 +35,14 @@ namespace StudentApp
             answer = answers;
             mark = marks;
             Login_Name.Text = user.username;
+            Marker.Text = "Оценка = 0";
         }
-        public MainWindow(int mark)
+        public MainWindow(int marke, Student stud)
         {
             
             InitializeComponent();
-            Marker.Text = Convert.ToString(mark);
+            Marker.Text = "Mark = " + Convert.ToString(marke);
+            mark.Add(new Marks{ mark = marke, student = stud });
         }
         private void EditUser(object sender, RoutedEventArgs e)
         {
@@ -63,6 +63,7 @@ namespace StudentApp
                 if (question[i].test.id == current_test.id)
                 {
                     que.Add(question[i]);
+                    max_mark += question[i].score;
                 }
             }
             List<Answers> answ = new List<Answers>();
@@ -73,11 +74,14 @@ namespace StudentApp
                     if (answer[j].question.id == que[i].id)
                     {
                         answ.Add(answer[j]);
+                        
                     }
                 }
             }
-            TestingWindow testingWindow = new TestingWindow(que,answ);
-            testingWindow.Show();
+            TestingWindow testingWindow = new TestingWindow(que, answ, user, mark);
+            testingWindow.ShowDialog();
+            Marker.Text = "Оценка = " + Convert.ToString(mark[mark.Count - 1].mark);
+            MessageBox.Show("Ваша оценка " + Convert.ToString(mark[mark.Count - 1].mark) + " из " + Convert.ToString(max_mark), "Оценка", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

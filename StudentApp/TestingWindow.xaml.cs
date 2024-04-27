@@ -14,18 +14,16 @@ using System.Windows.Shapes;
 using Lib;
 namespace StudentApp
 {
-    /// <summary>
-    /// Логика взаимодействия для TestingWindow.xaml
-    /// </summary>
     public partial class TestingWindow : Window
     {
-        public int mark = 0;
+        public List<Marks> mark = new List<Marks>();
         int quest_Count = 0;
         public List<Questions> questions = new List<Questions>();
         public List<Answers> answers = new List<Answers>();
-        public TestingWindow(List<Questions> a, List<Answers> b)
+        public Student student = new Student();
+        public TestingWindow(List<Questions> a, List<Answers> b, Student stud, List<Marks> marks)
         {
-
+            mark = marks;
             InitializeComponent();
             questions = a;
             answers = b;
@@ -33,43 +31,53 @@ namespace StudentApp
             Question.Text = questions[0].quest;
             for(int i = 0; i < answers.Count; i++)
             {
-                Answ.Items.Add(answers[i].name);
-                if(answers[i].question.id != 0)
+                if (answers[i].question.id != 1)
                 {
                     break;
                 }
+                Answ.Items.Add(answers[i].name);
+                
             }
+            mark.Add(new Marks { mark = 0, student = student });
+            student = stud;
         }
         private void ForwardClicked(object sender, System.Windows.RoutedEventArgs e)
         {
-           if(questions[quest_Count].whatIsRight == Answ.SelectedIndex)
+            if(Answ.SelectedItem != null)
             {
-                mark += questions[quest_Count].score;
-            }
-            quest_Count++;
-            if(quest_Count == questions.Count)
-            {
-                MainWindow testingWindow = new MainWindow(mark);
-                testingWindow.Show();
-                Close();
-
-            }
-            Question.Text = questions[1].quest;
-            for (int i = 0; i < answers.Count; i++)
-            {
-                if (answers[i].question.id == quest_Count)
+                
+                if (questions[quest_Count].whatIsRight == Answ.SelectedIndex)
                 {
-                    Answ.Items.Add(answers[i].name);
+                    mark[mark.Count-1].mark += questions[quest_Count].score;
                 }
+                quest_Count++;
+                if (quest_Count == questions.Count)
+                {
+                    //testingWindow.Show();
+                    Close();
 
-
+                }
+                else
+                {
+                    ProgresBar.Value++;
+                    Answ.Items.Clear();
+                    Question.Text = questions[quest_Count].quest;
+                    for (int i = 0; i < answers.Count; i++)
+                    {
+                        if (answers[i].question.id == quest_Count)
+                        {
+                            Answ.Items.Add(answers[i].name);
+                        }
+                    }
+                }
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("Выберите какой-нибудь ответ", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-        }
-
-        private void Answ_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            But.IsEnabled = true;
         }
     }
 }
