@@ -126,11 +126,19 @@
             <!-- Первая вкладка - тесты -->
             <TabItem Header="Тесты">
                 <Grid Background="GhostWhite">
-                    <ListBox x:Name="TestListBox" HorizontalAlignment="Left" Background="GhostWhite" Height="250" Width="400" Margin="10">
-                    </ListBox>
-                    <Button Click="Button_Click" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
-                    <Button Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
-                    <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+                    <ListView x:Name="TestListBox" HorizontalAlignment="Left" Background="GhostWhite" Height="250" Width="400" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="30">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="150">Имя теста</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="100">Создатель</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="120">Дата создания</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="Create_New_Test" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Click="Edit_Choised_Test" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Click="Delete_Choised_Test" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
                 </Grid>
             </TabItem>
 
@@ -143,31 +151,94 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- Список учителей -->
-                    <ListBox x:Name="TeacherListBox" Grid.Column="0" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
-                        
-                    </ListBox>
-                    <Button Click="Button_Click_2" Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
-                    <Button Click="Button_Click_1" Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
-                    <Button Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+                    <ListView x:Name="TeacherListView" Grid.Column="0" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="30">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="100">Логин</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="120">Пароль</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="Create_New_Teacher" Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Click="Edit_Choised_Teacher" Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Click="Delete_Choised_Teacher" Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
 
                     <!-- Выпадающий список с группами -->
-                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0" >
-                        
+                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="234,37,0,0" Grid.Column="1" >
+
                     </ComboBox>
 
                     <!-- Список учеников в выбранной группе -->
-                    <ListBox x:Name="StudentsListBox" Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
-                        
-                    </ListBox>
-                    <Button Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
-                    <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
-                    <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+                    <ListView x:Name="StudentsListView" Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="194,78,0,78">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="30">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="80">Логин</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="60">Пароль</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="80">Група</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="Create_New_Student" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="124,0,0,10"/>
+                    <Button Click="Edit_Choised_Student" Grid.Column="1" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="234,0,0,10"/>
+                    <Button Click="Delete_Choised_Student" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="344,0,0,10"/>
 
                     <!-- Выпадающий список с тестами для выбора -->
-                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="10,37,0,0">
-                        
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="234,342,0,0">
+
                     </ComboBox>
-                    
+                    <Button Click="Add_Choised_Test_To_Choised_Group" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="124,0,0,44"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Журнал">
+                <Grid Background="GhostWhite">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Список учителей -->
+                    <ListView x:Name=StudentListViewByTest" Grid.Column="0" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="30">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="100">Логин</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="120">Пароль</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="Create_New_Teacher" Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10"/>
+                    <Button Click="Edit_Choised_Teacher" Grid.Column="0" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="120,0,0,10"/>
+                    <Button Click="Delete_Choised_Teacher" Grid.Column="0" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="230,0,0,10"/>
+
+                    <!-- Выпадающий список с группами -->
+                    <ComboBox Name="Groups" Background="GhostWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="234,37,0,0" Grid.Column="1" >
+
+                    </ComboBox>
+
+                    <!-- Список учеников в выбранной группе -->
+                    <ListView x:Name="StudentsListBox" Grid.Column="1" Background="GhostWhite" HorizontalAlignment="Left" Height="250" Width="250" Margin="194,78,0,78">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="30">ID</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="80">Логин</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="60">Пароль</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Width="80">Група</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="Create_New_Student" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="124,0,0,10"/>
+                    <Button Click="Edit_Choised_Student" Grid.Column="1" Content="Редактировать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="234,0,0,10"/>
+                    <Button Click="Delete_Choised_Student" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="344,0,0,10"/>
+
+                    <!-- Выпадающий список с тестами для выбора -->
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="234,342,0,0">
+
+                    </ComboBox>
+                    <Button Click="Add_Choised_Test_To_Choised_Group" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="124,0,0,44"/>
+
                 </Grid>
             </TabItem>
         </TabControl>
