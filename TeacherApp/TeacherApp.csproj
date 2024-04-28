@@ -14,4 +14,10 @@
     <ProjectReference Include="..\Lib\Lib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="AddEditStudentWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

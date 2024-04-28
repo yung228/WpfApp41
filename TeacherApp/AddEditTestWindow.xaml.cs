@@ -26,13 +26,13 @@ namespace TeacherApp
             test = tests;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save_Test(object sender, RoutedEventArgs e)
         {
             test.Add(new Tests{ name = testNameTextBox.Text });
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Cancel(object sender, RoutedEventArgs e)
         {
             Close();
         }

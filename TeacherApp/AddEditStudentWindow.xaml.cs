@@ -15,14 +15,14 @@ using Lib;
 namespace TeacherApp
 {
     
-    public partial class AddEditTeacherWindow : Window
+    public partial class AddEditStudentWindow : Window
     {
-        public Teacher user;
-        public AddEditTeacherWindow(Teacher teacher)
+        public Student user;
+        public AddEditStudentWindow(Student student)
         {
             InitializeComponent();
-            user = teacher;
-            loginTextBox.Text = "Teacher1";
+            user = student;
+            loginTextBox.Text = "Student1";
         }
 
         private void Save_Client(object sender, RoutedEventArgs e)

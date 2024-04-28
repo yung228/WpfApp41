@@ -1,7 +1,7 @@
-﻿<Window x:Class="TeacherApp.AddEditTeacherWindow"
+﻿<Window x:Class="TeacherApp.AddEditStudentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Add/Edit Teacher" Height="330" Width="500">
+        Title="Add/Edit Student" Height="330" Width="500">
     <Window.Resources>
         <!-- Стиль для всех PasswordBox -->
         <Style TargetType="PasswordBox">

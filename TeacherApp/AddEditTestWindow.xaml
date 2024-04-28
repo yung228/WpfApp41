@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TeacherApp.AddEditTestWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Add/Edit Test" Height="230" Width="300">
+        Title="Add/Edit Test" Height="200" Width="300">
     <Window.Resources>
         <!-- Стиль для всех PasswordBox -->
         <Style TargetType="PasswordBox">
@@ -132,12 +132,9 @@
         <Label Content="Название теста:" Grid.Row="0" Margin="5"/>
         <TextBox x:Name="testNameTextBox" Grid.Row="1" Margin="5"/>
 
-        <Label Content="Создатель:" Grid.Row="2" Margin="5"/>
-        <TextBox x:Name="creatorTextBox" Grid.Row="3" Margin="5,5,10,120"/>
-
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
-            <Button Click="Button_Click" Content="Сохранить"  Margin="10" Height="20" Width="66"/>
-            <Button Click="Button_Click_1" Content="Отмена"  Height="19" Width="66"/>
+            <Button Click="Save_Test" Content="Сохранить"  Margin="10" Height="20" Width="66"/>
+            <Button Click="Cancel" Content="Отмена"  Height="19" Width="66"/>
         </StackPanel>
     </Grid>
 </Window>

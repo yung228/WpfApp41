@@ -23,5 +23,17 @@ namespace TeacherApp
         {
             InitializeComponent();
         }
+
+        //Ето просто затычки
+        //ps: У меня почему то не работает бд, поетому только так
+
+        private void yesButton(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        private void noButton(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
