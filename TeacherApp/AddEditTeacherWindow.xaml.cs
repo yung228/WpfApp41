@@ -22,7 +22,7 @@ namespace TeacherApp
         {
             InitializeComponent();
             user = teacher;
-            loginTextBox.Text = "Teacher1";
+            loginTextBox.Text = teacher.username;
         }
 
         private void Save_Client(object sender, RoutedEventArgs e)
@@ -34,6 +34,7 @@ namespace TeacherApp
         }
         private void Cancel(object sender, RoutedEventArgs e)
         {
+            user.id = -1;
             Close();
         }
     }

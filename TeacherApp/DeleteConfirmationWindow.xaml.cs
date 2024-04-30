@@ -19,8 +19,10 @@ namespace TeacherApp
     /// </summary>
     public partial class DeleteConfirmationWindow : Window
     {
-        public DeleteConfirmationWindow()
+        bool isBool;
+        public DeleteConfirmationWindow(bool a)
         {
+
             InitializeComponent();
         }
 
@@ -29,10 +31,12 @@ namespace TeacherApp
 
         private void yesButton(object sender, RoutedEventArgs e)
         {
+            isBool = true;
             Close();
         }
         private void noButton(object sender, RoutedEventArgs e)
         {
+            isBool = false;
             Close();
         }
     }

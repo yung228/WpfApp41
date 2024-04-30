@@ -19,21 +19,26 @@ namespace TeacherApp
     /// </summary>
     public partial class AddEditTestWindow : Window
     {
-        public List<Tests> test = new List<Tests>();
-        public AddEditTestWindow(List<Tests> tests)
+        public Tests test = new Tests();
+        public AddEditTestWindow(Tests tests)
         {
             InitializeComponent();
             test = tests;
+            testNameTextBox.Text = test.name;
         }
 
         private void Save_Test(object sender, RoutedEventArgs e)
         {
-            test.Add(new Tests{ name = testNameTextBox.Text });
+            test.name = testNameTextBox.Text;
             Close();
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
+            if(test.name == "")
+            {
+                test.id = -1;
+            }
             Close();
         }
     }
